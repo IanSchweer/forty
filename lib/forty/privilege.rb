@@ -1,3 +1,5 @@
+require 'pry'
+
 module Forty
   module Privilege
     class Base
@@ -14,6 +16,7 @@ module Forty
         privileges = []
         self.constants.each do |constant|
           acronym = self.const_get(constant)
+          binding.pry
           unless privileges_string.slice!(acronym).nil?
             privileges << self.get_privilege_name_by_acronym(acronym)
           end
